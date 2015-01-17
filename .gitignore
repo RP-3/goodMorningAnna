@@ -1,4 +1,5 @@
 node_modules/
 build.pem
 build.crx
+build/bundle.js
 build/images

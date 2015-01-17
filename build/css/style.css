@@ -20,3 +20,7 @@ img.bg {
   left: 0;
 }
 
+.temperature {
+  display: inline-block;
+  font-size: x-large;
+}
