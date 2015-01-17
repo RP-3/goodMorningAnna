@@ -8,10 +8,26 @@
     <link rel="stylesheet"  type='text/css'href="css/bootstrap.min.css">
     <link rel='stylesheet' type='text/css' href='css/style.css'>
     <link rel='stylesheet' type='text/css' href='css/weather-icons.css'>
-    <link rel='stylesheet' type='text/css' href='css/font-awesome.css'>
+    <link rel='stylesheet' type='text/css' href='css/font-awesome-4.2.0/css/font-awesome.min.css'>
   </head>
    <body>
       
+      <!-- independent control elements -->
+      <div id="chatbutton" class="chatbutton">
+        <i class="fa fa-wechat fa-2x chat-icon"></i>
+      </div>
+
+      <div id="chatpane" class="chat-pane">
+        <div class="generic-button" id="partner">
+          <i class="fa fa-home fa-2x chat-icon"></i>
+        </div>
+        <div>
+          <p id="sample" class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos soluta alias sunt quam sapiente ad pariatur unde reprehenderit saepe maxime, nemo illum nulla, fuga adipisci totam deleniti molestiae rem voluptate.</p>
+        </div>
+      </div>
+
+      <!-- end independent control elements -->
+
       <div class="container">
         <!-- top row -->
           <div style="height:275px">
@@ -20,6 +36,7 @@
               <div class="temperature"><span id="temperature">current|max</span><i class="wi wi-celsius"></i></div>
             </div>
           </div>
+
         <!-- middle row -->
         <div class="row">
           <div style="display:flex; align-items:center">

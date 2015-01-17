@@ -22,6 +22,6 @@ require('./weatherWidget.js')();
 
 
 /*
-Set up firebae chat
+Set up firebase chat
 */
-
+require('./chat.js')();
