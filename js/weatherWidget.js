@@ -23,24 +23,24 @@ module.exports = function(){
       jsonp: "callback",
       dataType: "jsonp",
       success: function( response ) {
-          console.log( response ); // server response
           
           //fetch the icon classname for display
           var icon = response.currently.icon;
           if(icon && typeof icon === 'string'){
             icon = icon.replace(/\-/g, '_');
             icon = forecastOptions[icon];
-          }else{
-            icon = "wi-thermometer-exterior";
+            if(icon){
+              $("#weathericon")
+              .removeClass("wi-thermometer-exterior")
+              .addClass(icon);
+            }
           }
 
+          //set the temperature
           var temperature = Math.round(response.currently.temperature);
           var max = Math.round(response.daily.data[0].temperatureMax);
           var tempString = temperature + '/' + max;
-
           $('#temperature').text(tempString);
-
-          //response.currently.aparentTemperature
       }
     });
 
