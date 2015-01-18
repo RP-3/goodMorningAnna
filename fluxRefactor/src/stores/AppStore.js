@@ -9,7 +9,8 @@ var _data = {
   message: 'Data from Store',
   displayName: null,
   imageSource: null,
-  location: null
+  location: null,
+  dataPanelOpen: false
 };
 
 var calcTodaysImage = function(){

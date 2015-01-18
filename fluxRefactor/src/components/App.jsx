@@ -9,9 +9,11 @@ AppStore.init(); //get data from localStorage and calculate constants for the da
 var WeatherBox = require('./WeatherBox');
 var Clock = require('./Clock');
 var Greeting = require('./Greeting');
+var ChatButton = require('./buttons/ChatButton');
 
 function getAppState(){
-  return AppStore.getData()
+  var state = AppStore.getData()
+  return state;
 };
 
 var APP = React.createClass({
@@ -34,35 +36,43 @@ var APP = React.createClass({
   componentWillUnmount: function(){
     AppStore.removeChangeListener(this._onChange);
   },
+
+  handleSelect: function(target){ //where 'target' is the name of the element selected
+    if(target === 'dataPanel'){
+      this.setState({dataPanelOpen: this.state.dataPanelOpen ? false : true});
+    }
+  },
   
   render: function(){
     return (
-      <div className="container">
-      <img src={this.state.imageSource} className="bg"></img>
-
-        <WeatherBox location={this.state.location}/>
-
-        <div className="row">
-          <div style={{display:'flex', alignItems:'center'}}>
-          </div>
-            <div className="col-md-3"></div>
-            <div className="col-md-6">
-              <div className="row">
-                <Clock/>
-              </div>
-              <div className="row">
-                <Greeting displayName={this.state.displayName}/>
-              </div>
+      <div>
+        <ChatButton handleSelect={this.handleSelect} dataPanelOpen={this.state.dataPanelOpen}/>
+        <img src={this.state.imageSource} className="bg"></img>
+        
+        <div className="container">
+          <WeatherBox location={this.state.location}/>
+          <div className="row">
+            <div style={{display:'flex', alignItems:'center'}}>
             </div>
-            <div className="col-md-3"></div>
-        </div>
+              <div className="col-md-3"></div>
+              <div className="col-md-6">
+                <div className="row">
+                  <Clock/>
+                </div>
+                <div className="row">
+                  <Greeting displayName={this.state.displayName}/>
+                </div>
+              </div>
+              <div className="col-md-3"></div>
+          </div>
 
-        <div className="row">
-          <div className="col-md-4"></div>
-          <div className="col-md-4"></div>
-          <div className="col-md-4"></div>
-        </div>
+          <div className="row">
+            <div className="col-md-4"></div>
+            <div className="col-md-4"></div>
+            <div className="col-md-4"></div>
+          </div>
 
+        </div>
       </div>
       );
   }
