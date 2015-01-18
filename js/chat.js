@@ -50,4 +50,17 @@ module.exports = function(){
     }
   });
 
+  //set the height of the messageBox
+  var setChatHeight = function(){
+    panelHeight = $(window).height() - (150 + 35 + 48);
+    $("#messagebox").height(panelHeight);
+    console.log(panelHeight);
+  };
+
+  setChatHeight();
+
+  $(window).on('resize', function(e){
+    setChatHeight();
+  });
+
 };

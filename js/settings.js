@@ -1,12 +1,10 @@
 module.exports = function(){
 
-  //add event listener to chatpane button
   $("#settingsbutton").click(function(e){
     e.stopPropagation();
     $("#settingspane").animate({width:'toggle'},350);
   });
 
-  //add event listener for chat submission
   $("#namebox").keypress(function(e){
     //if key was enter key
     if(event.keyCode === 13){
