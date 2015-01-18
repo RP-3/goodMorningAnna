@@ -8,6 +8,7 @@ AppStore.init(); //get data from localStorage and calculate constants for the da
 //components
 var WeatherBox = require('./WeatherBox');
 var Clock = require('./Clock');
+var Greeting = require('./Greeting');
 
 function getAppState(){
   return AppStore.getData()
@@ -50,7 +51,7 @@ var APP = React.createClass({
                 <Clock/>
               </div>
               <div className="row">
-                <p id="greeting" className="text-center" style={{color:'white', fontSize:'50px', fontWeight:'bolder'}}></p>
+                <Greeting displayName={this.state.displayName}/>
               </div>
             </div>
             <div className="col-md-3"></div>

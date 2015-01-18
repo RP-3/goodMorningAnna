@@ -9,7 +9,7 @@ function getTime(){
   return hours + ":" + minutes;
 }
 
-var APP = React.createClass({
+var Clock = React.createClass({
   getInitialState: function(){
     return {time: getTime()};
   },
@@ -37,4 +37,4 @@ var APP = React.createClass({
   }
 })
 
-module.exports = APP;
+module.exports = Clock;
