@@ -13,18 +13,24 @@
    <body>
       
       <!-- independent control elements -->
-      <div id="chatbutton" class="chatbutton">
-        <i class="fa fa-wechat fa-2x chat-icon"></i>
+      <div id="chatbutton" class="chat-button">
+        <i class="fa fa-wechat fa-2x button-icon"></i>
       </div>
 
+      <div id='settingsbutton' class='settings-button'>
+        <i class="fa fa-cogs fa-2x button-icon"></i>
+      </div>
+      <!-- end independent control elements -->
+
+      <!-- chat box -->
       <div id="chatpane" class="chat-pane">
         <div class="generic-button" id="partner">
-          <i class="fa fa-home fa-2x chat-icon"></i>
+          <i class="fa fa-home fa-2x button-icon"></i>
         </div>
         <div class="divider">Black Board</div>
-        <div class="message-box" id="messagebox">
-          <p class="message"><strong>Pa Bear: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p class="message"><strong>Tubby: </strong>Quos soluta alias sunt quam sapiente ad pariatur unde reprehenderit saepe maxime, nemo illum nulla, fuga adipisci totam deleniti molestiae rem voluptate.</p>
+        <div id="messagebox">
+          <p class="message"><strong>Computer Says: </strong>It looks like your internet is either not working, or a little slow.</p>
+          <p class="message"><strong>Computer Says: </strong>Chat et al. won't work if you're not connected.</p>
         </div>
 
         <div class="input-box">
@@ -32,8 +38,22 @@
           <div id="inputbox" class="text-input" contenteditable></div>
         </div>
       </div>
+      <!-- end chat box -->
 
-      <!-- end independent control elements -->
+      <!-- settings box -->
+      <div id="settingspane" class="settings-pane">
+        <div class="settings-box">
+          <div class="divider"><strong>Settings</strong></div>
+          <div class="divider">Your name</div>
+          <div id="namebox" class="text-input" contenteditable></div>
+          <div class="divider">Your Referer's name</div>
+          <div id="refererbox" class="text-input" contenteditable></div>
+          <div class="divider">Your Refererred group</div>
+          <div id="referredgroupbox" class="text-input" contenteditable></div>
+        </div>
+      </div>
+      <!-- end settings box -->
+
 
       <div class="container">
         <!-- top row -->
@@ -48,9 +68,7 @@
         <div class="row">
           <div style="display:flex; align-items:center">
           </div>
-            <div class="col-md-3">
-              
-            </div>
+            <div class="col-md-3"></div>
             <div class="col-md-6">
               <row>
                 <h1 id="clock" class="text-center" style="color:white; font-size:160px; font-weight:bolder"></h1>
@@ -59,20 +77,13 @@
                 <p id="greeting" class="text-center" style="color:white; font-size:50px; font-weight:bolder;"></p>
               </row>
             </div>
-            <div class="col-md-3">
-            </div>
+            <div class="col-md-3"></div>
         </div>
         <!-- bottom row -->
         <div class="row">
-          <div class="col-md-4">
-            
-          </div>
-          <div class="col-md-4">
-            
-          </div>
-          <div class="col-md-4">
-            
-          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4"></div>
         </div>
 
       </div>

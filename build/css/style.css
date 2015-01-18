@@ -35,30 +35,52 @@ img.bg {
   background-color: rgba(10, 10, 10, 0.6);
 }
 
+.settings-pane {
+  display: none;
+  width: 300px;
+  min-height: 100%;
+  position: absolute;
+  left: 0;
+  background-color: black;
+  background-color: rgba(10, 10, 10, 0.6);
+}
+
 .message {
   color: white;
   margin: 5px;
 }
 
-.chatbutton {
+.chat-button {
   position: absolute;
   right: 10px;
   z-index: 10;
   background-color: black;
-  opacity: 0.8;
+  background-color: rgba(10, 10, 10, 0.7);
   border-radius: 0 0 7px 7px;
   height: 40px;
   width: 45px;
   padding: 7px;
 }
 
-.chat-icon {
+.button-icon {
   color: whitesmoke;
+}
+
+.settings-button {
+  position: absolute;
+  z-index: 10;
+  background-color: black;
+  background-color: rgba(10, 10, 10, 0.7);
+  border-radius: 0 10px 10px 0;
+  height: 40px;
+  width: 45px;
+  padding: 7px;
+  bottom: 10px;
 }
 
 .generic-button {
   background-color: black;
-  opacity: 0.8;
+  background-color: rgba(10, 10, 10, 0.7);
   border-radius: 7px 7px 7px 7px;
   height: 35px;
   width: 35px;
@@ -81,6 +103,7 @@ img.bg {
 .text-input {
   height: 100%;
   padding: 5px;
+  color: white;
 }
 
 .divider {
@@ -89,4 +112,8 @@ img.bg {
   background-color: rgba(10, 10, 10, .5);
   padding: 2px;
   padding-left: 5px;
+}
+
+.settings-box {
+  margin-top: 50px;
 }

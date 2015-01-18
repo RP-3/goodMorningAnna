@@ -1,8 +1,6 @@
 var Firebase = require('firebase');
 var messageRef = new Firebase('https://goodmorninganna.firebaseIO.com/messages');
 
-matilda = messageRef;
-
 module.exports = function(){
 
   //load up messages from messageRef
@@ -44,7 +42,7 @@ module.exports = function(){
       e.stopPropagation();
       var message = e.target.textContent;
       messageRef.push({
-        sender: 'anonymous',
+        sender: window.localStorage.getItem("goodMorningAnna_userName"),
         text: message,
         time: Date.now()
       });

@@ -16,7 +16,7 @@ module.exports = function(userName){
     if(hours < 24) timeOfDay = 'evening';
     if(hours < 17) timeOfDay = 'afternoon';
     if(hours < 12) timeOfDay = 'morning';
-    greeting.innerHTML = "Good " + timeOfDay + ", " + userName + ".";
+    greeting.innerHTML = "Good " + timeOfDay + ", " + (userName || '______') + ".";
   }, 100);
 
 };
