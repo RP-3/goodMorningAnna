@@ -10,6 +10,7 @@ var WeatherBox = require('./WeatherBox');
 var Clock = require('./Clock');
 var Greeting = require('./Greeting');
 var ChatButton = require('./buttons/ChatButton');
+var DataPanel = require('./DataPanel');
 
 function getAppState(){
   var state = AppStore.getData()
@@ -39,7 +40,7 @@ var APP = React.createClass({
 
   handleSelect: function(target){ //where 'target' is the name of the element selected
     if(target === 'dataPanel'){
-      this.setState({dataPanelOpen: this.state.dataPanelOpen ? false : true});
+      AppActions.toggleDataPanel();
     }
   },
   
@@ -47,6 +48,7 @@ var APP = React.createClass({
     return (
       <div>
         <ChatButton handleSelect={this.handleSelect} dataPanelOpen={this.state.dataPanelOpen}/>
+        <DataPanel dataPanelOpen={this.state.dataPanelOpen}/>
         <img src={this.state.imageSource} className="bg"></img>
         
         <div className="container">

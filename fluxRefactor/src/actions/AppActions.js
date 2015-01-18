@@ -33,6 +33,13 @@ var AppActions = {
         });
       }
     });
+  },
+
+  toggleDataPanel: function(){
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.TOGGLE_DATA_PANEL,
+      data: null
+    });
   }
 };
 

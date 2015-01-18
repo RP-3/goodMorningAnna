@@ -55,6 +55,10 @@ AppDispatcher.register(function(payload){
     _data.location = JSON.parse(window.localStorage.getItem("goodMorningAnna_location") || null);
   }
 
+  if(actionType === AppConstants.TOGGLE_DATA_PANEL){
+    _data.dataPanelOpen = _data.dataPanelOpen ? false : true;
+  }
+
   AppStore.emitChange();
 
 });
