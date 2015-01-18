@@ -1,7 +1,4 @@
-/*
-Get name of user
-*/
-//TODO
+
 
 $(document).on('ready', function(){
   /*setup settings panel*/
