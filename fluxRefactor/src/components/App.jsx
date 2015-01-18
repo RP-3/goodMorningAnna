@@ -7,6 +7,7 @@ AppStore.init(); //get data from localStorage and calculate constants for the da
 
 //components
 var WeatherBox = require('./WeatherBox');
+var Clock = require('./Clock');
 
 function getAppState(){
   return AppStore.getData()
@@ -32,10 +33,6 @@ var APP = React.createClass({
   componentWillUnmount: function(){
     AppStore.removeChangeListener(this._onChange);
   },
-
-  handleClick: function(){
-    AppActions.exampleAction('Data from View');
-  },
   
   render: function(){
     return (
@@ -50,7 +47,7 @@ var APP = React.createClass({
             <div className="col-md-3"></div>
             <div className="col-md-6">
               <div className="row">
-                <h1 id="clock" className="text-center" style={{color:'white', fontSize:'160px', fontWeight:'bolder'}}></h1>
+                <Clock/>
               </div>
               <div className="row">
                 <p id="greeting" className="text-center" style={{color:'white', fontSize:'50px', fontWeight:'bolder'}}></p>

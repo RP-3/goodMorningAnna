@@ -51,9 +51,7 @@ AppDispatcher.register(function(payload){
 
   if(actionType === AppConstants.RECIEVE_LOCATION){
     window.localStorage.setItem("goodMorningAnna_location", JSON.stringify(data));
-    console.log('written item to local', JSON.stringify(data));
     _data.location = JSON.parse(window.localStorage.getItem("goodMorningAnna_location") || null);
-    console.log('read item from local: ', _data.location);
   }
 
   AppStore.emitChange();

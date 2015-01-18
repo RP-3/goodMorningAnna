@@ -42,9 +42,7 @@ AppDispatcher.register(function(payload){
   if(actionType === AppConstants.RECIEVE_WEATHER){
     //load up all the data we got
     window.localStorage.setItem("goodMorningAnna_weather", JSON.stringify(data));
-    console.log('written item to local', JSON.stringify(data));
     _data.weather = JSON.parse(window.localStorage.getItem("goodMorningAnna_weather") || null);
-    console.log('read item from local: ', _data.weather);
   }
 
   WeatherStore.emitChange();
