@@ -1,4 +1,3 @@
-'use strict';
 var Dispatcher = require('flux').Dispatcher;
 var copyProperties = require('react/lib/copyProperties');
 var AppDispatcher = copyProperties(new Dispatcher(), {
@@ -13,7 +12,32 @@ var AppDispatcher = copyProperties(new Dispatcher(), {
       source: 'VIEW_ACTION',
       action: action
     });
-  }
+  },
+
+  //data coming from a server other than our own
+  handleExternalAction: function(action) {
+    this.dispatch({
+      source: 'EXTERNAL_ACTION',
+      action: action
+    });
+  },
+
+  /*
+  handleServerlAction: function(action) {
+    this.dispatch({
+      source: 'SERVER_ACTION',
+      action: action
+    });
+  },
+  */
+
+  //data coming asynchronously from the local machine
+  handleLocalAction: function(action) {
+    this.dispatch({
+      source: 'LOCAL_ACTION',
+      action: action
+    });
+  },
 
 });
 

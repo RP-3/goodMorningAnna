@@ -1,7 +1,7 @@
-'use strict';
-
 var keyMirror = require('react/lib/keyMirror');
 
 module.exports = keyMirror({
-  EXAMPLE_CONSTANT: null
+  EXAMPLE_CONSTANT: null,
+  RECIEVE_WEATHER: null,
+  RECIEVE_LOCATION: null,
 });

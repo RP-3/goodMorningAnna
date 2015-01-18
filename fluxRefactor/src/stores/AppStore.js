@@ -8,7 +8,16 @@ var CHANGE_EVENT = 'change';
 var _data = {
   message: 'Data from Store',
   displayName: null,
-  imageSource: null
+  imageSource: null,
+  location: null
+};
+
+var calcTodaysImage = function(){
+  var start = Date.parse("Fri Jan 16 2015 21:18:33 GMT-0800 (PST)");
+      var day = 1000*60*60*24;
+      var elapsedDays = (Date.now() - start) / day;
+      while(elapsedDays > 64){ elapsedDays = elapsedDays - 64;} //because we currently have 64 images
+      return 'build/assets/images/' + Math.ceil(elapsedDays) + '.jpg';
 };
 
 var AppStore = merge(EventEmitter.prototype, {
@@ -18,16 +27,9 @@ var AppStore = merge(EventEmitter.prototype, {
   },
 
   init: function(){
-    //get the display name from localStorage
-    _data.displayName = window.localStorage.getItem("goodMorningAnna_displayName");
-
-    //get today's image and display it
-    var start = Date.parse("Fri Jan 16 2015 21:18:33 GMT-0800 (PST)");
-    var day = 1000*60*60*24;
-    var elapsedDays = (Date.now() - start) / day;
-    while(elapsedDays > 64){ elapsedDays = elapsedDays - 64;} //because we currently have 64 images
-    _data.imageSource = 'build/assets/images/' + Math.ceil(elapsedDays) + '.jpg';
-
+    _data.displayName = window.localStorage.getItem("goodMorningAnna_displayName"); //get the display name from localStorage
+    _data.location = JSON.parse(window.localStorage.getItem("goodMorningAnna_location") || null); //get and parse the object with the location from locastorage
+    _data.imageSource = calcTodaysImage(); //get today's image number
   },
 
   emitChange: function(){
@@ -44,12 +46,14 @@ var AppStore = merge(EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(payload){
-  var action = payload.action;
-  console.log('STORE DISPATCHER REGISTER', action);
+  var data = payload.action.data;
+  var actionType = payload.action.actionType;
 
-  if(action.actionType === AppConstants.EXAMPLE_CONSTANT){
-    var text = action.text + ' to Dispatcher to Store and back';
-    _data.message = text;
+  if(actionType === AppConstants.RECIEVE_LOCATION){
+    window.localStorage.setItem("goodMorningAnna_location", JSON.stringify(data));
+    console.log('written item to local', JSON.stringify(data));
+    _data.location = JSON.parse(window.localStorage.getItem("goodMorningAnna_location") || null);
+    console.log('read item from local: ', _data.location);
   }
 
   AppStore.emitChange();

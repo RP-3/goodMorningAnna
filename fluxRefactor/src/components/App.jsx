@@ -1,11 +1,12 @@
-'use strict';
-
 var React = require('react');
 
+//stores and actions
+var AppActions = require('../actions/AppActions');
 var AppStore = require('../stores/AppStore');
 AppStore.init(); //get data from localStorage and calculate constants for the day
-var AppActions = require('../actions/AppActions');
 
+//components
+var WeatherBox = require('./WeatherBox');
 
 function getAppState(){
   return AppStore.getData()
@@ -24,6 +25,10 @@ var APP = React.createClass({
     AppStore.addChangeListener(this._onChange);
   },
 
+  componentWillMount: function () {
+    AppActions.getLocation();  
+  },
+
   componentWillUnmount: function(){
     AppStore.removeChangeListener(this._onChange);
   },
@@ -37,13 +42,7 @@ var APP = React.createClass({
       <div className="container">
       <img src={this.state.imageSource} className="bg"></img>
 
-          <div style={{height:'275px'}}>
-            <div className="weatherBox">
-              <i id="weathericon" className="wi wi-thermometer-exterior fa-2x"></i>
-              <div className="temperature"><span id="temperature">current|max</span><i className="wi wi-celsius"></i></div>
-            </div>
-          </div>
-
+        <WeatherBox location={this.state.location}/>
 
         <div className="row">
           <div style={{display:'flex', alignItems:'center'}}>
