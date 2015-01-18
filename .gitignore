@@ -7,3 +7,5 @@ goodMorningAnna.pem
 build/bundle.js
 build/images
 build/css/font-awesome-4.2.0/
+fluxRefactor/build/assets/**/*
+fluxRefactor/build/**/*.js
