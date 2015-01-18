@@ -1,6 +1,9 @@
 node_modules/
 build.pem
 build.crx
+buildNotes.txt
+goodMorningAnna.crx
+goodMorningAnna.pem
 build/bundle.js
 build/images
 build/css/font-awesome-4.2.0/
