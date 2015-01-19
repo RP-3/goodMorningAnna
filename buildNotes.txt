@@ -1,3 +1,39 @@
 Build from root directory:
 crxmake --pack-extension=. --pack-extension-key=../goodMorningAnna.pem
 
+Todo (roadmap):
+1. Create account
+  -name
+  -email
+  -alias
+  -password
+  -referral email
+
+2. Use JWTs for auth
+
+3. add users as contacts
+  -chat with mutually-accepted contacts only
+
+3b. create groups
+
+--> 1.0!
+
+4. image storage (unlimited, public default, paid private)
+  -imgid
+  -ownerid
+  -private
+  -tags
+
+5. Create streams:
+  -public default
+  -allMyUploads (default)
+  -by uploader
+  -by tag
+    -by time of day (morning, afternoon, evening, night)
+
+6. Subscribe to streams
+  -allMyUploads (default)
+  -rate streams
+  -rate images
+
+--> 1.1!
