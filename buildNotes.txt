@@ -1,0 +1,3 @@
+Build from root directory:
+crxmake --pack-extension=. --pack-extension-key=../goodMorningAnna.pem
+

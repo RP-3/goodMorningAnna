@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
 
-  "name": "Album",
+  "name": "GoodMorningAnna",
 
   "description": "Private photos from friends and family to keep your browsing happy.",
 
-  "content_security_policy": "script-src 'self' https://api.forecast.io; object-src 'self' https://api.forecast.io; connect-src 'self' https://api.forecast.io ",
+  "content_security_policy": "script-src 'self' https://api.forecast.io https://*.firebaseio.com ; object-src 'self' https://api.forecast.io https://*.firebaseio.com ; connect-src 'self' https://api.forecast.io wss://*.firebaseio.com ",
 
   "version": "0.1",
 
@@ -18,6 +18,6 @@
   ],
 
   "chrome_url_overrides": {
-    "newtab": "build/album.html"
+    "newtab": "./index.html"
   }
 }
