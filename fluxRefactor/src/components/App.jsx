@@ -11,6 +11,8 @@ var Clock = require('./Clock');
 var Greeting = require('./Greeting');
 var ChatButton = require('./buttons/ChatButton');
 var DataPanel = require('./DataPanel');
+var SettingsButton = require('./buttons/SettingsButton');
+var SettingsPanel = require('./SettingsPanel');
 
 function getAppState(){
   var state = AppStore.getData()
@@ -42,6 +44,9 @@ var APP = React.createClass({
     if(target === 'dataPanel'){
       AppActions.toggleDataPanel();
     }
+    if(target === 'settingsPanel'){
+      AppActions.toggleSettingsPanel();
+    }
   },
   
   render: function(){
@@ -49,6 +54,8 @@ var APP = React.createClass({
       <div>
         <ChatButton handleSelect={this.handleSelect} dataPanelOpen={this.state.dataPanelOpen}/>
         <DataPanel dataPanelOpen={this.state.dataPanelOpen} displayName={this.state.displayName}/>
+        <SettingsButton handleSelect={this.handleSelect} settingsPanelOpen={this.state.settingsPanelOpen}/>
+        <SettingsPanel settingsPanelOpen={this.state.settingsPanelOpen} displayName={this.state.displayName}/>
         <img src={this.state.imageSource} className="bg"></img>
         
         <div className="container">

@@ -51,7 +51,6 @@ var ChatPane = React.createClass({
 
   _handleSubmit: function(e){
     if(e.keyCode === 13){
-    console.log('inhere!', e.target.value);
       e.preventDefault();
       e.stopPropagation();
       var message = e.target.value;

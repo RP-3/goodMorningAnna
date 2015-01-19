@@ -10,7 +10,8 @@ var _data = {
   displayName: null,
   imageSource: null,
   location: null,
-  dataPanelOpen: false
+  dataPanelOpen: false,
+  settingsPanelOpen: false,
 };
 
 var calcTodaysImage = function(){
@@ -54,9 +55,15 @@ AppDispatcher.register(function(payload){
     window.localStorage.setItem("goodMorningAnna_location", JSON.stringify(data));
     _data.location = JSON.parse(window.localStorage.getItem("goodMorningAnna_location") || null);
   }
-
   if(actionType === AppConstants.TOGGLE_DATA_PANEL){
     _data.dataPanelOpen = _data.dataPanelOpen ? false : true;
+  }
+  if(actionType === AppConstants.TOGGLE_SETTINGS_PANEL){
+    _data.settingsPanelOpen = _data.settingsPanelOpen ? false : true;
+  }
+  if(actionType === AppConstants.SET_DISPLAY_NAME){
+    window.localStorage.setItem("goodMorningAnna_displayName", data);
+    _data.displayName = window.localStorage.getItem("goodMorningAnna_displayName");
   }
 
   AppStore.emitChange();

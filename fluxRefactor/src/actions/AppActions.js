@@ -40,7 +40,22 @@ var AppActions = {
       actionType: AppConstants.TOGGLE_DATA_PANEL,
       data: null
     });
-  }
+  },
+
+  toggleSettingsPanel: function(){
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.TOGGLE_SETTINGS_PANEL,
+      data: null
+    });
+  },
+
+  setDisplayName: function(name){
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.SET_DISPLAY_NAME,
+      data: name
+    });
+  },
+
 };
 
 module.exports = AppActions;
