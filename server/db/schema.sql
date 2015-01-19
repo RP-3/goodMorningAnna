@@ -1,5 +1,5 @@
-CREATE EXTENSION IF NOT EXISTS plv8;
-CREATE EXTENSION IF NOT EXISTS hstore;
+CREATE EXTENSION IF NOT EXISTS "plv8";
+CREATE EXTENSION IF NOT EXISTS "hstore";
 
 
 CREATE TABLE users (
@@ -11,10 +11,16 @@ CREATE TABLE users (
 );
 
 CREATE TABLE contacts (
-  requester_id SERIAL REFERENCES users(id),
-  requestee_id SERIAL REFERENCES users(id),
+  requester_id INT REFERENCES users(id),
+  requestee_id INT REFERENCES users(id),
   requestee_alias VARCHAR(30),
   UNIQUE(requester_id, requestee_id)
+);
+
+CREATE TABLE images (
+  id SERIAL PRIMARY KEY,
+  owner INT REFERENCES users(id),
+  url VARCHAR(60) UNIQUE
 );
 
 -- Index commonly queried fields in users
@@ -24,3 +30,8 @@ CREATE INDEX users_email_index ON users USING btree (email);
 -- Index commonly queried fields in contacts
 CREATE INDEX contacts_requester_id ON contacts USING btree (requester_id);
 CREATE INDEX contacts_requestee_id ON contacts USING btree (requestee_id);
+
+-- Index commonly queried fields in images
+CREATE INDEX images_id ON images USING btree (id);
+CREATE INDEX images_owner ON images USING btree (owner);
+CREATE INDEX images_url ON images USING btree (url);
