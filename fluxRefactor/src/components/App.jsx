@@ -48,7 +48,7 @@ var APP = React.createClass({
     return (
       <div>
         <ChatButton handleSelect={this.handleSelect} dataPanelOpen={this.state.dataPanelOpen}/>
-        <DataPanel dataPanelOpen={this.state.dataPanelOpen}/>
+        <DataPanel dataPanelOpen={this.state.dataPanelOpen} displayName={this.state.displayName}/>
         <img src={this.state.imageSource} className="bg"></img>
         
         <div className="container">
