@@ -2,17 +2,11 @@
 var db = require('./config.js').db;
 var s3 = require('./config.js').s3;
 
-var restify = require('restify');
+var express = require('express');
+var app = express();
 
-function respond(req, res, next) {
-  res.send('hello ' + req.params.name);
-  next();
-}
-
-var server = restify.createServer();
-server.get('/hello/:name', respond);
-server.head('/hello/:name', respond);
-
-server.listen(8080, function() {
-  console.log('%s listening at %s', server.name, server.url);
+app.get('/', function(req, res){
+  res.send('hello world');
 });
+
+app.listen(3000);
