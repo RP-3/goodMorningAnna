@@ -31,9 +31,13 @@ var WeatherBox = React.createClass({
     this.setState(getDataFromWeatherStore());
   },
 
-  componentWillMount: function () {
-    if(this.props.location){
-      WeatherActions.fetchWeather(this.props.location);
+  componentWillReceiveProps: function (nextProps) {
+    if(nextProps.location){
+      if(!this.state.weather){
+        WeatherActions.fetchWeather(nextProps.location);
+      }else if((Date.now() - this.state.weather.time) > 1000*60*10){ //fetch at most, once every 10 mins
+        WeatherActions.fetchWeather(nextProps.location);
+      }
     }
   },
 

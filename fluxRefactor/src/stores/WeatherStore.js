@@ -6,20 +6,13 @@ var merge = require('react/lib/merge');
 var CHANGE_EVENT = 'change';
 
 var _data = {
-  weather: null
+  weather: JSON.parse(window.localStorage.getItem("goodMorningAnna_weather") || null)
 };
 
 var WeatherStore = merge(EventEmitter.prototype, {
   
   getData: function(){
     return _data;
-  },
-
-  init: function(){
-    _data.weather = JSON.parse(window.localStorage.getItem("goodMorningAnna_weather") || null);
-    if(_data.weather !== null){
-
-    }
   },
 
   emitChange: function(){
@@ -41,6 +34,7 @@ AppDispatcher.register(function(payload){
 
   if(actionType === AppConstants.RECIEVE_WEATHER){
     //load up all the data we got
+    data.time = Date.now();
     window.localStorage.setItem("goodMorningAnna_weather", JSON.stringify(data));
     _data.weather = JSON.parse(window.localStorage.getItem("goodMorningAnna_weather") || null);
   }

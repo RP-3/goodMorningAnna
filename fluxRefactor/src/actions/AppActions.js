@@ -21,20 +21,6 @@ var AppActions = {
     });
   },
 
-  fetchWeather: function(){
-    $.ajax({
-      url: "https://api.forecast.io/forecast/2f8efe741324bd670c91c4cd593a4062/"+lat+","+long+"?units=si",
-      jsonp: "callback",
-      dataType: "jsonp",
-      success: function( response ) {
-        AppDispatcher.handleExternalAction({
-          actionType: AppConstants.RECIEVE_WEATHER,
-          data: response
-        });
-      }
-    });
-  },
-
   toggleDataPanel: function(){
     AppDispatcher.handleViewAction({
       actionType: AppConstants.TOGGLE_DATA_PANEL,

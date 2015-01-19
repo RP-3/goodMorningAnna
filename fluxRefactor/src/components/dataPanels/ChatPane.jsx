@@ -25,7 +25,7 @@ var ChatPane = React.createClass({
   componentWillMount: function () {
     var that = this;
     messageRef
-    .limitToLast(15)
+    .limitToLast(25)
     .on('value', that._updateStateFromFirebase);
     window.addEventListener('resize', this.render.bind(that));
   },
