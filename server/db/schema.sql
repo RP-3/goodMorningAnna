@@ -19,7 +19,10 @@ CREATE TABLE contacts (
 
 CREATE TABLE images (
   id SERIAL PRIMARY KEY,
-  owner INT REFERENCES users(id),
+  owner_email VARCHAR(30) REFERENCES users(email) NOT NULL,
+  success BOOLEAN,
+  size INT,
+  name VARCHAR(40) UNIQUE,
   url VARCHAR(60) UNIQUE
 );
 
