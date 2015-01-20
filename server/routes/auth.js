@@ -1,6 +1,7 @@
 var Promise = require('bluebird');
 var bcrypt = Promise.promisifyAll(require('bcrypt'));
 var express = require('express');
+var jwt = require('../helpers/jwtAuth');
 
 module.exports = function(app, db){
 
@@ -12,7 +13,7 @@ module.exports = function(app, db){
   @param password string
   @param [alias string]
   */
-  router.post('/createUser', function (req, res, next){
+  router.post('/createUser', function (req, res){
     var email = req.body.email;
     var password = req.body.password;
     //handle missing data
@@ -56,7 +57,7 @@ module.exports = function(app, db){
   @param email string
   @param password string
   */
-  router.post('/login', function (req, res, next){
+  router.post('/login', function (req, res){
     //parse and handle missing data
     var email = req.body.email;
     var password = req.body.password;
@@ -65,12 +66,14 @@ module.exports = function(app, db){
       return;
     }
     email = email.toLowerCase();
+    var account;
 
      db
     //fetch the requester's details
     .select()
     .from('users')
     .where('email', email)
+    .returning()
 
     //check if the email is valid
     .then(function(rows){
@@ -78,15 +81,14 @@ module.exports = function(app, db){
         res.sendStatus(401);
         throw new Error('User does not exist');
       }
-      accountSummary = rows[0];
+      account = rows[0];
       //check if the hashed password matches the one in the database
-      return bcrypt.compareAsync(password, accountSummary.password); //returns a boolean
+      return bcrypt.compareAsync(password, account.password); //returns a boolean
     })
     //send the result
     .then(function(result){
       if(result){
-        res.sendStatus(200);
-        //TODO: generate and send a JWT!
+        jwt.sendToken(req, res, account);
       }else{
         res.sendStatus(401);
       }
@@ -104,7 +106,7 @@ module.exports = function(app, db){
   /*
   TODO: implement
   change password in that account
-  router.post('/changePassword', function (req, res, next){
+  router.post('/changePassword', function (req, res){
 
   });
   */
