@@ -9,13 +9,13 @@ var morgan = require('morgan');
 var app = express();
 
 //set up middleware stack
-app.use( bodyParser.json() ); // to support JSON-encoded bodies
+app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({extended: true})); // to support URL-encoded bodies
-app.use(multer());// for parsing multipart/form-data
 app.use(morgan('dev')); //generall logging
 
 //load routes
 var authRouter = require('./routes/auth')(app, db);
+var imageRouter = require('./routes/images')(app, db, s3);
 
 app.get('/', function(req, res){
   res.send('hello world');
