@@ -14,7 +14,8 @@
     "https://api.forecast.io",
     "http://*.google.com/",
     "unlimitedStorage",
-    "geolocation"
+    "geolocation",
+    "http://localhost/*"
   ],
 
   "chrome_url_overrides": {
