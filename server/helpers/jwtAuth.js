@@ -5,7 +5,7 @@ var tokenSecret = require('./genToken')();
 //generate and send a token to the client after successful auth
 module.exports.sendToken = function (req, res, user) {
   // build up the token
-  var expiration = Date.now() + 1000*60*60*24*60; //60 days from now
+  var expiration = Date.now() + 1000*60*60*24*90; //90 days from now
 
   var unencodedToken = {
     id: user.id,
@@ -20,7 +20,8 @@ module.exports.sendToken = function (req, res, user) {
   .type('application/json')
   .send({
     token: token,
-    exp: expiration
+    exp: expiration,
+    alias: user.alias
   });
 
 };
