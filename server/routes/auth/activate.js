@@ -28,7 +28,6 @@ module.exports = function(router, db){
 
     //check if the email is valid
     .then(function(rows){
-      console.log('rows: ', rows);
       if(rows.length === 0){
         res.sendStatus(401);
         throw new Error('User does not exist or activation key is invalid.');
