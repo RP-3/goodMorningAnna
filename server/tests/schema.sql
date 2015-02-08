@@ -5,7 +5,7 @@ CREATE EXTENSION IF NOT EXISTS "hstore";
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email VARCHAR(60) NOT NULL UNIQUE,
-  activated BOOLEAN default FALSE, 
+  activated BOOLEAN default FALSE NOT NULL, 
   alias VARCHAR(30),
   activation_key CHAR(10),
   password CHAR(60) NOT NULL,
@@ -15,7 +15,8 @@ CREATE TABLE users (
 CREATE TABLE contacts (
   requester_id INT REFERENCES users(id),
   requestee_id INT REFERENCES users(id),
-  requestee_alias VARCHAR(30),
+  alias VARCHAR(30) NOT NULL,
+  approved BOOLEAN default FALSE NOT NULL,
   UNIQUE(requester_id, requestee_id)
 );
 
