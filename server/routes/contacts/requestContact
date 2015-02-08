@@ -1,0 +1,55 @@
+var validator = require('../../helpers/validateRequest');
+
+module.exports = function(router, db){
+
+  router.post('/request', function (req, res){
+
+    var id = req.__AUTHORISED_id;
+
+    var validation = validator(req.body, ['email', 'alias']);
+    if(typeof validation === 'string'){
+      res.status(400).send(validation);
+      return;
+    }
+
+    var targetEmail = req.body.email.toLowerCase();
+    var alias = req.body.alias;
+
+    //check the targetEmail is valid
+    db
+    .select()
+    .from('users')
+    .where('email', targetEmail)
+    .andWhere('activated', true)
+
+    //attempt to create a request
+    .then(function(rows){
+      if(rows.length === 0) throw new Error('Requested contact does not exist');
+
+      targetId = rows[0].id;
+
+      return db('contacts')
+        .insert({
+          requester_id: id,
+          requestee_id: targetId,
+          alias: alias
+        });
+    })
+
+    //response with success
+    .then(function(data){
+      res.status(200).send();
+    })
+    //send the result
+    .catch(function(err){
+      console.log(err);
+
+      if(err.message === 'Requested contact does not exist') return res.status(400).send(err.message);
+      
+      if(err.message.indexOf('duplicate key value violates unique constraint') !== -1) return res.status(200).send();
+
+      res.status(500).send(err);
+    });
+  });
+
+};
