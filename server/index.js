@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: true})); // to support URL-encoded bodi
 app.use(morgan('dev')); //generall logging
 
 //load routes
-var authRouter = require('./routes/auth')(app, db);
+var authRouter = require('./routes/auth/index.js')(app, db);
 var imageRouter = require('./routes/images')(app, db, s3);
 
 app.get('/', function(req, res){

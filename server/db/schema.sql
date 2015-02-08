@@ -4,7 +4,8 @@ CREATE EXTENSION IF NOT EXISTS "hstore";
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  email VARCHAR(30) NOT NULL UNIQUE,
+  email VARCHAR(60) NOT NULL UNIQUE,
+  activated BOOLEAN default FALSE, 
   alias VARCHAR(30),
   password CHAR(60) NOT NULL,
   time TIMESTAMPTZ NOT NULL default CURRENT_TIMESTAMP
@@ -36,5 +37,5 @@ CREATE INDEX contacts_requestee_id ON contacts USING btree (requestee_id);
 
 -- Index commonly queried fields in images
 CREATE INDEX images_id ON images USING btree (id);
-CREATE INDEX images_owner ON images USING btree (owner);
+CREATE INDEX images_owner_email ON images USING btree (owner_email);
 CREATE INDEX images_url ON images USING btree (url);
