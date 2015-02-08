@@ -30,6 +30,27 @@ var validators = {
     if(!types(reqBody.activationKey, 'string')) return 'ActivationKey must be a string';
 
     if(reqBody.activationKey.length !== 10) return 'Invalid Activation Key';
+  },
+
+  alias: function(reqBody){
+    if(!reqBody.alias) return 'alias must be provided';
+    //check aliass are strings
+    if(!types(reqBody.alias, 'string')) return 'alias must be a string';
+    return true;
+  },
+
+  requester_id: function(reqBody){
+    if(reqBody.requester_id === undefined) return 'requester_id must be provided';
+    //check requester_ids are numbers
+    if(!types(reqBody.requester_id, 'number')) return 'requester_id must be a number';
+    return true;
+  },
+
+  requestee_id: function(reqBody){
+    if(!reqBody.requestee_id) return 'requestee_id must be provided';
+    //check requestee_ids are numbers
+    if(!types(reqBody.requestee_id, 'number')) return 'requestee_id must be a number';
+    return true;
   }
 
 };

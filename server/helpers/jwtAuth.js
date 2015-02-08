@@ -43,6 +43,7 @@ module.exports.authorise = function (req, res, next) {
       }
 
       req.__AUTHORISED_EMAIL = decodedToken.email;
+      req.__AUTHORISED_id = decodedToken.id;
 
       return next();
 

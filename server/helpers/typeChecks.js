@@ -6,6 +6,10 @@ var types = {
     return true;
   },
 
+  number: function(arg){
+    return (arg % 1 === 0);
+  }
+
 };
 
 module.exports = function(argument, type){
