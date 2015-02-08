@@ -15,6 +15,7 @@ app.use(morgan('dev')); //generall logging
 
 //load routes
 var authRouter = require('./routes/auth/index.js')(app, db);
+var contactsRouter = require('./routes/contacts/index.js')(app, db);
 var imageRouter = require('./routes/images')(app, db, s3);
 
 app.get('/', function(req, res){
