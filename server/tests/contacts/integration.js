@@ -190,5 +190,59 @@ describe('Contacts route', function(){
 
   });
 
+  it('should update a contact alias', function(done){
+
+    rp({
+      url: 'http://localhost:3000/contacts/alias',
+      method: 'PUT',
+      headers: {
+        Authorization: authToken_anna.token
+      },
+      json: true,
+      body: {
+        requester_id: requests[0].requester_id,
+        requestee_id: requests[0].requestee_id,
+        alias: 'hu-gga-da'
+      }
+    })
+    .then(function(data){
+      console.log('data: ', data);
+      done();
+    })
+    .catch(function(error){
+      console.log('error: ', error.error);
+      expect(error).to.be.a('null');
+      done();
+    });
+
+  });
+
+  it('should delete a contact', function(done){
+
+    rp({
+      url: 'http://localhost:3000/contacts/accept',
+      method: 'POST',
+      headers: {
+        Authorization: authToken_anna.token
+      },
+      json: true,
+      body: {
+        requester_id: requests[0].requester_id,
+        requestee_id: requests[0].requestee_id,
+        alias: 'hu-gga-da'
+      }
+    })
+    .then(function(data){
+      console.log('data: ', data);
+      done();
+    })
+    .catch(function(error){
+      console.log('error: ', error.error);
+      expect(error).to.be.a('null');
+      done();
+    });
+
+  });
+
 
 });
